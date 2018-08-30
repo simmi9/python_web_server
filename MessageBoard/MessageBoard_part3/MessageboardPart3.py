@@ -16,7 +16,9 @@
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs
+
 memory = []
+
 form = '''<!DOCTYPE html>
   <title>Message Board</title>
   <form method="POST" action="http://localhost:8000/">
@@ -47,15 +49,9 @@ class MessageHandler(BaseHTTPRequestHandler):
 
         # 1. Send a 303 redirect back to the root page.
         self.send_response(303)
-       # self.send_header('Content-type', 'text/html')
         self.send_header('Location', '/') #This will navigate to the original page
-        self.end_headers(
+        self.end_headers()
 
-        # Send the "message" field back as the response.
-        #self.send_response(200)
-        #self.send_header('Content-type', 'text/plain; charset=utf-8')
-        #self.end_headers()
-        #self.wfile.write(message.encode())
 
     def do_GET(self):
         # First, send a 200 OK response.
@@ -66,13 +62,11 @@ class MessageHandler(BaseHTTPRequestHandler):
         self.end_headers()
     
         # 2. Put the response together out of the form and the stored messages.
-         mesg = form.format("\n".join(memory))
+        mesg = form.format("\n".join(memory))
     
         # 3. Send the response.
-         self.wfile.write(mesg.encode())
+        self.wfile.write(mesg.encode())
 
-        # Then encode and send the form.
-        # self.wfile.write(form.encode())
 
 if __name__ == '__main__':
     server_address = ('', 8000)
