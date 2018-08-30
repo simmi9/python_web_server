@@ -92,9 +92,9 @@ class Shortener(http.server.BaseHTTPRequestHandler):
             if name in memory:
 
                 # 2. Send a 303 redirect to the long URI in memory[name].
-            self.send_response(303)
-            self.send_header('Location', memory[name])
-            self.end_headers()
+                self.send_response(303)
+                self.send_header('Location', memory[name])
+                self.end_headers()
                 #    Delete the following line.
                 raise NotImplementedError("Step 2 isn't written yet.")
             else:
