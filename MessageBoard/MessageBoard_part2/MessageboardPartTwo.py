@@ -17,7 +17,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs
 
-
 form = '''<!DOCTYPE html>
   <title>Message Board</title>
   <form method="POST" action="http://localhost:8000/">
@@ -45,8 +44,8 @@ class MessageHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain; charset=utf-8')
         self.end_headers()
         self.wfile.write(message.encode())
-        
-     def do_GET(self):
+
+    def do_GET(self):
         # First, send a 200 OK response.
         self.send_response(200)
 
