@@ -26,6 +26,10 @@ form = '''<!DOCTYPE html>
     <br>
     <button type="submit">Post it!</button>
   </form>
+   <pre>
+{}
+  </pre>
+
 '''
 
 
